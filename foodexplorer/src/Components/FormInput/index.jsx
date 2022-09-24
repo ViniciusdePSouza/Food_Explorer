@@ -1,9 +1,9 @@
 import { Container } from './styles'
 
-export function FormInput({ props, ...rest }) {
+export function FormInput({ title, ...rest }) {
     return (
         <Container>
-            <label htmlFor={props.title}>
+            <label htmlFor={title}>
                 <input {...rest} />
             </label>
 
