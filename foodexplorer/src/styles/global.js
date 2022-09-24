@@ -1,8 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
+
 import theme from './theme'
 
 export default createGlobalStyle`
-    *{
+    * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -13,8 +14,8 @@ export default createGlobalStyle`
     }
 
     body {
-        background-color: ${({theme}) => theme.BACKGROUND_DARKBLUE_800};
-        color: #ffffff;
+        background: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_800};
+        color: ${({ theme }) => theme.COLORS.WHITE} ;
     }
 
     button, span, input {
