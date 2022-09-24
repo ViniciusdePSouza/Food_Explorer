@@ -8,8 +8,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
-    padding: 9rem 10.8rem;
+    padding: 0 10.8rem
 `
 
 export const Content = styled.div`
