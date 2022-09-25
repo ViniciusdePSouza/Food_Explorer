@@ -10,7 +10,7 @@ export const Container = styled.div`
     font-size: 1.6rem;
 
     > label {
-        color: ${({ theme }) => theme.COLORS.GREY_TEXT};
+        color: ${({ theme }) => theme.COLORS.WHITE};
         
         width: 100%;
 
@@ -35,6 +35,4 @@ export const Container = styled.div`
         }
 
     }
-
-    
 `
