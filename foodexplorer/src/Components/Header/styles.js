@@ -12,13 +12,15 @@ export const Container = styled.div`
 
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_700};
 
+    grid-area: header;
+
     > div {
         display: flex;
         gap: 1rem;
     }
 
     .button-wrapper{
-        width: 30%;
+        width: 15%;
     }
 
     grid-area: header;

@@ -19,7 +19,7 @@ export function Header() {
             </span>
 
             <div className="button-wrapper">
-                <Button loading={false} title="Meu Pedido"/>
+                <Button loading={false} title="Meu Pedido" picture={orderIcon}/>
             </div>
 
             <LogOut>

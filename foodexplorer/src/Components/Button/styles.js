@@ -8,6 +8,8 @@ export const Container = styled.button`
     justify-content: center;
     text-align: center;
 
+    gap: 2rem;
+
     margin-top: 1rem;
 
     font-family: 'Poppins', sans-serif;
