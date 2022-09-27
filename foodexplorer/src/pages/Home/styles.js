@@ -18,6 +18,27 @@ export const Content = styled.div`
     grid-area: content;
 
     padding: 3rem 12.4rem;
+
+    font-family: 'Poppins', sans-serif;
+
+    > h1 {
+        font-weight: 500;
+        font-size: 3.2rem;
+        line-height: 2.2rem;
+
+        text-align: right;
+
+        width: 100%;
+
+        margin: 5rem 0;
+
+    }
+
+    > .div-input {
+        width: 50%;
+
+        margin-top: 3rem;
+    }
 `
 
 export const Banner = styled.div`
