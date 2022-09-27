@@ -37,10 +37,11 @@ export const Content = styled.div`
     > .div-input {
         width: 50%;
 
-        margin-top: 3rem;
+        margin-top: 4rem;
+        margin-bottom: -2rem;
     }
 
-    > #main-dishes {
+    > .main-dishes {
         display: flex;
     }
 `
