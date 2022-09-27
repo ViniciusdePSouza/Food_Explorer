@@ -29,25 +29,51 @@ export const Banner = styled.div`
 
     margin-top: 13rem;
 
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_700};
+    background: linear-gradient( to top, ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_700} 0%, #072d3b 100% );
 
+    
     > div {
-        position: absolute;
+        position: relative;
 
-        img {
-            position: relative;
-
-            top: -150px;
-            left: -50px;
-        }
+        > img {
+                position: absolute;
+    
+                bottom: 0;
+                left: -55px;
+    
+                opacity: 0.9;
+    
+                height: 155%
     }
 
-    .banner-title{
-        margin: 4rem 4rem ;
+            
+    }
 
+    > .banner {
         display: flex;
         flex-direction: column;
-        justify-content: end;
-        text-align: right;
+        align-items: center;
+        justify-content: center;
+
+        padding-right: 4rem;
+        gap: 1rem;
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 3.2rem;
+            line-height: 2.2rem;
+
+            text-align: left;
+
+            width: 100%;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 1.6rem;
+            line-height: 2.2rem
+        }
     }
 `

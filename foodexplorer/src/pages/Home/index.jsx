@@ -13,12 +13,14 @@ export function Home() {
 
       <Content>
         <Banner>
-          <div>
+            <div>
+
             <img src={banner} alt="" />
-          </div>
-          <div className="banner-title">
+            </div>
+
+          <div className="banner">
             <h1>Sabores inigualáveis</h1>
-            <span>Sinta o cuidado do preparo com ingredientes selecionados</span>
+            <h3>Sinta o cuidado do preparo com ingredientes selecionados</h3>
           </div>
         </Banner>
       </Content>
