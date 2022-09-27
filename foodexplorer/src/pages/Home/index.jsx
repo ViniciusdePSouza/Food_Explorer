@@ -3,6 +3,7 @@ import { Container, Content, Banner } from './styles'
 import { FormInput } from '../../Components/FormInput'
 import { Button } from '../../Components/Button'
 import { Header } from '../../Components/Header'
+import { Card } from '../../Components/Card'
 
 import { FiSearch } from 'react-icons/fi'
 
@@ -32,6 +33,10 @@ export function Home() {
           <Input icon={FiSearch} placeholder="Nome do prato" type="text" />
         </div>
         <h1>Pratos Principais</h1>
+
+        <section id='main-dishes'>
+         <Card/>
+        </section>
       </Content>
 
     </Container>

@@ -39,6 +39,10 @@ export const Content = styled.div`
 
         margin-top: 3rem;
     }
+
+    > #main-dishes {
+        display: flex;
+    }
 `
 
 export const Banner = styled.div`
