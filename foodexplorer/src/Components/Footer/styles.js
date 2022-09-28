@@ -4,7 +4,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
 
-    padding: 3.5rem 12rem ;
+    padding: 3.5rem 12rem;
 
     display: flex;
     align-items: center;
@@ -24,6 +24,25 @@ export const Container = styled.div`
 
     >span {
         color: ${({ theme }) => theme.COLORS.GREY_TEXT};
+    }
+
+    @media (max-width: 900px) {
+        padding: 2rem;
+
+        > div {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+
+            color: ${({ theme }) => theme.COLORS.GREY_TEXT};
+
+            font-size: 1rem;
+        }
+
+        >span {
+            color: ${({ theme }) => theme.COLORS.GREY_TEXT};
+            font-size: 1.5rem;
+        }
     }
 
 
