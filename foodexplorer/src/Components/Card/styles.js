@@ -80,7 +80,7 @@ export const Container = styled.button`
     }
 
     &&:hover {
-        scale: 1.075
+        scale: 1.05;
     }
     
 `
