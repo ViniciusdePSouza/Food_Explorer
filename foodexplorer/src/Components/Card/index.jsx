@@ -1,7 +1,7 @@
 import { Container, FavIcon, MinusIcon, PlusIcon } from './styles'
 
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
-import parmaToast from '../../assets/parma-toast.png'
+import parmaToast from '../../assets/dishes/parma-toast.png'
 
 import { Button } from '../../Components/Button'
 

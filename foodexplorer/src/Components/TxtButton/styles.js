@@ -18,4 +18,8 @@ export const Container = styled.button`
 
     border: none;
     outline: none;
+
+    > svg {
+        margin-right: 1.1rem;
+    }
 `

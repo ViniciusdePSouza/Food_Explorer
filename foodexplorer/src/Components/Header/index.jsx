@@ -2,7 +2,7 @@ import { Container, LogOut } from './styles'
 
 import logo from '../../assets/logo.svg'
 import orderIcon from '../../assets/orderIcon.svg'
-import getBackIcon from '../../assets/getBackIcon.svg'
+import logout from '../../assets/logout.svg'
 
 import { Button } from '../../Components/Button'
 
@@ -18,7 +18,7 @@ export function Header() {
             </div>
 
             <LogOut>
-                <img src={getBackIcon} alt="" />
+                <img src={logout} alt="" />
             </LogOut>
         </Container>
     )
