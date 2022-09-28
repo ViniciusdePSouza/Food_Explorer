@@ -102,6 +102,13 @@ export const FavIcon = styled.button`
         font-size: 2rem;
     }
 
+    &&:active {
+
+        >svg {
+            color: ${({ theme }) => theme.COLORS.RED};
+        }
+    }
+
 `
 export const MinusIcon = styled.button`
     width: 20px;
@@ -114,6 +121,13 @@ export const MinusIcon = styled.button`
         color: #fff;
     }
 
+    &&:active {
+
+        >svg {
+            scale: 1.5;
+        }
+    }
+
 `
 export const PlusIcon = styled.button`
     width: 20px;
@@ -124,6 +138,13 @@ export const PlusIcon = styled.button`
 
     >svg {
         color: #fff;
+    }
+
+    &&:active {
+
+        >svg {
+            scale: 1.5;
+        }
     }
 
 `

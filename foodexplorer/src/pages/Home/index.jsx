@@ -57,7 +57,10 @@ export function Home() {
 
         <h1>Sobremesas</h1>
 
-        <Carousel cols={3} rows={1} loop={true}>
+        <Carousel cols={3} rows={1} loop={true} gap={0}>
+          <Carousel.Item>
+            <Card />
+          </Carousel.Item>
           <Carousel.Item>
             <Card />
           </Carousel.Item>
@@ -71,7 +74,7 @@ export function Home() {
 
         <h1>Bebidas</h1>
 
-        <Carousel cols={3} rows={1} loop={true}>
+        <Carousel cols={3} rows={1} loop={true} gap={0}>
           <Carousel.Item>
             <Card />
           </Carousel.Item>
@@ -85,7 +88,7 @@ export function Home() {
             <Card />
           </Carousel.Item>
         </Carousel>
-
+        
       </Content>
 
       <Footer />
