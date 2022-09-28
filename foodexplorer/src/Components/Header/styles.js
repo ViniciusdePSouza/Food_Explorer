@@ -28,6 +28,20 @@ export const Container = styled.div`
     }
 
     grid-area: header;
+
+    @media (max-width: 1040px) {
+        .button-wrapper{
+        width: 100%;
+
+        margin: 0;
+        }
+    }
+
+    @media (max-width: 900px) {
+        
+        gap: 4rem;
+        
+    }
 `
 
 export const LogOut = styled.button`

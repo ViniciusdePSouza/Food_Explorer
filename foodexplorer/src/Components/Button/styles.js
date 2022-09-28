@@ -26,4 +26,11 @@ export const Container = styled.button`
     padding: 1.6rem 0;
 
     border-radius: 5px;
+
+    @media (max-width: 1040px) {
+        img {
+            width: 20px;
+            height: 20px;
+        }
+    }
 `

@@ -16,6 +16,10 @@ export const Container = styled.div`
             width: 100%;
         }
     }
+
+    @media (max-width: 1040px) {
+        padding: 0 7.5rem;
+    }
 `
 
 export const Content = styled.div`
@@ -27,6 +31,7 @@ export const Content = styled.div`
 
     gap: 4rem;
 
+    
     > img {
         width: 54rem;
         height: 54rem;
@@ -34,12 +39,12 @@ export const Content = styled.div`
 
     > div  {
         height: 100%;
-
+        
         display: flex;
         flex-direction: column;
 
         margin-top: 6rem;
-
+        
         h1, h3, h5 {
             font-family: 'Poppins', sans-serif;
             color: ${({ theme }) => theme.COLORS.WHITE}
@@ -49,15 +54,48 @@ export const Content = styled.div`
             font-weight: 500;
             font-size: 4rem;
         }
-
+        
         h3 {
             font-weight: 400;
             font-size: 2rem;
             line-height: 140%;
-
+            
             filter: brightness(0.8);
-
+            
             margin-top: .8rem;
+        }
+    }
+
+    @media (max-width: 1040px) {
+        display: flex;
+
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        > img {
+            width: 25rem;
+            height: 25rem;
+        }
+
+        > div {
+            align-items: center;
+            justify-content: center;
+
+            h1 {
+            font-weight: 500;
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 140%;
+            
+            filter: brightness(0.8);
+            
+            margin-top: .8rem;
+        }
         }
     }
 `
@@ -94,6 +132,19 @@ export const ButtonWrapper = styled.div`
     > div {
         width: 50%;
     }
+
+    @media (max-width: 1040px) {
+        gap: 1rem;
+
+        h2 {
+            font-size: 3rem;
+        }
+
+        > div {   
+            width: 46%
+        }
+    }
+
 `
 
 export const IngredientCard = styled.div`
