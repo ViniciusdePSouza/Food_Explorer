@@ -88,7 +88,6 @@ export function Home() {
             <Card />
           </Carousel.Item>
         </Carousel>
-        
       </Content>
 
       <Footer />

@@ -11,4 +11,8 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
+
+    .test {
+        background-color: red;
+    }
 `
