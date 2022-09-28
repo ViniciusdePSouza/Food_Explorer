@@ -6,6 +6,8 @@ import { Header } from '../../Components/Header'
 import { Card } from '../../Components/Card'
 import { Footer } from '../../Components/Footer'
 
+import 'react-multi-carousel/lib/styles.css';
+
 import { FiSearch } from 'react-icons/fi'
 
 import Carousel from 'better-react-carousel'
@@ -33,12 +35,15 @@ export function Home() {
         </Banner>
 
         <div className="div-input">
-          <Input icon={FiSearch} placeholder="Nome do prato" type="text" />
+          <Input icon={FiSearch} placeholder="Pesquisar prato nos favoritos" type="text" />
         </div>
-        
-        <h1>Pratos Principais</h1>
 
-        <Carousel cols={3} rows={1} loop={true}>
+        <h1>Pratos Principais</h1>
+        
+        <Carousel cols={3} rows={1} loop={true} gap={0}>
+          <Carousel.Item>
+            <Card />
+          </Carousel.Item>
           <Carousel.Item>
             <Card />
           </Carousel.Item>
@@ -76,11 +81,14 @@ export function Home() {
           <Carousel.Item>
             <Card />
           </Carousel.Item>
+          <Carousel.Item>
+            <Card />
+          </Carousel.Item>
         </Carousel>
 
       </Content>
 
-      <Footer/>
+      <Footer />
 
     </Container>
   )

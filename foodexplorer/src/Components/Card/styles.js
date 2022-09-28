@@ -1,16 +1,16 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.button`
 
-    width: 30rem;
-    height: 50rem;
+    width: 25.2rem;
+    height: 40rem;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    padding: 4rem;
+    padding: 2.5rem;
 
     border-radius: 10px;
 
@@ -18,18 +18,17 @@ export const Container = styled.div`
 
     position: relative;
 
-    gap: .8rem;
+    transition: all 0.2s;
 
     >img {
-        width: 24rem;
-        height: 24rem;
+        width: 20rem;
+        height: 20rem;
     }
 
     > h1 {
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        font-size:2rem;
-        line-height:3.3rem;
+        font-size:1.8rem;
 
         color: ${({ theme }) => theme.COLORS.WHITE};
 
@@ -41,12 +40,11 @@ export const Container = styled.div`
 
         font-family: 'Roboto', sans-serif;
         font-weight: 400;
-        font-size:1.4rem;
-        line-height:2.2rem;
+        font-size:1.2rem;
 
         text-align: center;
 
-        opacity: 0.75
+        opacity: 0.75;
     }
 
     >h2 {
@@ -62,23 +60,27 @@ export const Container = styled.div`
 
     }
 
-    > span {
-        color: ${({ theme }) => theme.COLORS.WHITE};
-
-        font-family: 'Roboto', sans-serif;
-        font-weight: 700;
-        font-size:2rem;
-        line-height:3.2rem;
-    }
-
+    
     > div {
         display: flex;
         align-items: center;
         justify-content: center;
-
+        
         width: 100%;
-
+        
         gap: 2rem;
+
+        span {
+            color: ${({ theme }) => theme.COLORS.WHITE};
+    
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            font-size: 1.7rem;
+        }
+    }
+
+    &&:hover {
+        scale: 1.075
     }
     
 `

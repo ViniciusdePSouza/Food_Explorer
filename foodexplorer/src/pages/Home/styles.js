@@ -19,6 +19,8 @@ export const Content = styled.div`
 
     padding: 3rem 12.4rem;
 
+    margin: 0 auto;
+
     font-family: 'Poppins', sans-serif;
 
     > h1 {
