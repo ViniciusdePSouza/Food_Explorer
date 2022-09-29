@@ -41,6 +41,10 @@ export const Content = styled.div`
     >main {
         margin-bottom: 20rem;
     }
+
+    @media (max-width: 1040px) {        
+        padding:0 5rem;
+    }
 `
 
 export const HeaderButton = styled.button`

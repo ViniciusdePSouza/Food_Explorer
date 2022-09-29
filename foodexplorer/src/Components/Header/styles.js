@@ -31,9 +31,9 @@ export const Container = styled.div`
 
     @media (max-width: 1040px) {
         .button-wrapper{
-        width: 100%;
+            width: 100%;
 
-        margin: 0;
+            margin: 0;
         }
     }
 

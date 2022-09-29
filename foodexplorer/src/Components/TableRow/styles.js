@@ -13,9 +13,9 @@ export const Container = styled.div`
         justify-content: left;
 
         border: 1px solid ${({ theme }) => theme.COLORS.GREY_TEXT};
-        color: ${({ theme }) => theme.COLORS.GREY_TEXT};
+        color: ${({ theme }) => theme.COLORS.WHITE};
 
-        padding: 2rem;
+        padding: 1rem;
 
         span {
             font-family: 'Roboto';
@@ -23,6 +23,8 @@ export const Container = styled.div`
             font-weight: 400;
             font-size: 1.4rem;
             line-height: 160%;
+
+            opacity: 0.8;
         }
     }
 

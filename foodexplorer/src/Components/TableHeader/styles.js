@@ -35,4 +35,12 @@ export const Container = styled.div`
     #last-child{
         border-top-right-radius: 10px;
     }
+
+    @media (max-width: 900px){
+        
+        #first-child{
+            border-top-left-radius: 10px;
+            padding-right: 34px;
+        }
+    }
 `
