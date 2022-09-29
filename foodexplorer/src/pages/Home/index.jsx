@@ -1,7 +1,5 @@
 import { Container, Content, Banner } from './styles'
 
-import { FormInput } from '../../Components/FormInput'
-import { Button } from '../../Components/Button'
 import { Header } from '../../Components/Header'
 import { Card } from '../../Components/Card'
 import { Footer } from '../../Components/Footer'
@@ -40,7 +38,7 @@ export function Home() {
 
         <h1>Pratos Principais</h1>
         
-        <Carousel cols={3} rows={1} loop={true} gap={0}>
+        <Carousel cols={4} rows={1} loop={true} gap={0}>
           <Carousel.Item>
             <Card />
           </Carousel.Item>
@@ -57,7 +55,7 @@ export function Home() {
 
         <h1>Sobremesas</h1>
 
-        <Carousel cols={3} rows={1} loop={true} gap={0}>
+        <Carousel cols={4} rows={1} loop={true} gap={0}>
           <Carousel.Item>
             <Card />
           </Carousel.Item>
@@ -74,7 +72,7 @@ export function Home() {
 
         <h1>Bebidas</h1>
 
-        <Carousel cols={3} rows={1} loop={true} gap={0}>
+        <Carousel cols={4} rows={1} loop={true} gap={0}>
           <Carousel.Item>
             <Card />
           </Carousel.Item>
