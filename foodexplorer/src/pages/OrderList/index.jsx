@@ -7,7 +7,7 @@ import { Footer } from '../../Components/Footer'
 import { TableHeader } from '../../Components/TableHeader'
 import { TableRow } from '../../Components/TableRow'
 
-export function Orders() {
+export function OrderList() {
     return (
         <Container>
             <Header/>
