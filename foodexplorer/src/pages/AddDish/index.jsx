@@ -1,4 +1,4 @@
-import { Container, HeaderButton, Form, Content, ShorterInput, BiggerInput } from './styles'
+import { Container, HeaderButton, Form, Content, ShorterInput, BiggerInput, Textarea, Section, InputFile, FormButton } from './styles'
 
 import { Header } from '../../Components/Header'
 import { Footer } from '../../Components/Footer'
@@ -24,13 +24,19 @@ export function AddDish() {
 
                 <Form>
                     <h1>Adicionar Prato</h1>
-                    <div>
+                    <Section>
                         <ShorterInput>
                             <label htmlFor='img'>
                                 Imagem do Prato
                             </label>
 
-                            <InputAddDish placeholder="Pesquisar prato nos favoritos" type="file" id='img' name='img' />
+                            <InputFile>
+                            <img src={UploadIcon} alt="" />
+                            <label htmlFor='dish-picture' id='label-picture'>
+                                Selecione a foto do prato 
+                                <input type='file' id='dish-picture'/>
+                            </label>
+                            </InputFile>
                         </ShorterInput>
                         <BiggerInput>
                             <label htmlFor='name'>
@@ -39,13 +45,14 @@ export function AddDish() {
 
                             <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='name' name='name' />
                         </BiggerInput>
-                    </div>
-                    <div>
+                    </Section>
+                    <Section>
                         <BiggerInput>
-                            <div>
+                            <span>Ingredientes</span>
+                            <Section id='ingredients-section'>
                                 <IngredientItem value="Pão Naan" />
-                                <IngredientItem placeholder="Adicionar" isNEW />
-                            </div>
+                                <IngredientItem placeholder="Adicionar" isNew />
+                            </Section>
                         </BiggerInput>
                         <ShorterInput>
                             <label htmlFor='price'>
@@ -54,7 +61,19 @@ export function AddDish() {
 
                             <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='price' name='price' />
                         </ShorterInput>
-                    </div>
+                    </Section>
+
+                    <Textarea>
+                        <label htmlFor='description'>
+                            Descrição
+                        </label>
+
+                        <textarea name="description" id="description" ></textarea>
+                    </Textarea>
+
+                    <Section>
+                        <FormButton>Adicionar Prato</FormButton>
+                    </Section>
                 </Form>
             </Content>
 

@@ -22,13 +22,6 @@ export const Content = styled.div`
 
 export const Form = styled.form`
 
-    > div {
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        gap: 3rem;
-    }
-
     h1 {
         font-family: 'Poppins';
         font-style: normal;
@@ -63,6 +56,73 @@ export const HeaderButton = styled.button`
     }
 `
 
+export const Textarea = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: baseline;
+
+    width: 100%;
+
+    > label {
+        font-family: 'Poppins', sans-serif;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 100%;
+
+        opacity: 0.65;
+
+        margin-bottom: 1.5rem;
+    }
+
+    > textarea {
+        width: 100%;
+        height: 20rem;
+
+        resize: none; 
+
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_800};
+
+        outline: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+        border-radius: 10px;
+
+    }
+`
+export const Section = styled.div`
+        display:flex;
+        align-items: center;
+        justify-content: end;
+        gap: 3rem;
+
+        width: 100%;
+`
+export const InputFile = styled.div`
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1rem;
+
+        border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+        border-radius: 10px;
+
+        width: 100%;
+
+       > #label-picture {
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        input {
+            display: none;
+        }       
+`
+
 export const ShorterInput = styled.div`
     width: 35%;
 
@@ -77,6 +137,8 @@ export const ShorterInput = styled.div`
     font-size: 1.6rem;
     line-height: 100%;
 
+    margin-bottom: 5rem;
+
     label { 
         opacity: 0.65;
 
@@ -90,6 +152,8 @@ export const BiggerInput = styled.div`
     flex-direction: column;
     align-items: left;
 
+    margin-bottom: 5rem;
+
     color: ${({ theme }) => theme.COLORS.WHITE}; 
     font-family: 'Roboto';
     font-style: normal;
@@ -99,11 +163,54 @@ export const BiggerInput = styled.div`
 
     > div  {
         background-color: transparent;
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+
+        border: 1px solid ${({ theme }) => theme.COLORS.WHITE};
+        border-radius: 10px;
     }
 
-    label { 
+    > label, span { 
         opacity: 0.65;
 
         margin-bottom: 1.5rem;
+    }
+
+    .text-area {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    #ingredients-section{
+        padding: 1rem;
+        justify-content: start;
+    }
+`
+
+export const FormButton = styled.button`
+    width:40%;
+    padding: 1.5rem;
+    
+    margin-top: 3rem;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    border: none;
+    border-radius: 10px;
+
+    color: ${({ theme }) => theme.COLORS.WHITE};
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+
+    transition: all 0.2s;
+
+    button:hover {
+        filter: brightness(1.1)
     }
 `

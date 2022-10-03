@@ -15,7 +15,7 @@ export const Container = styled.div`
     >input {
         width: 100%;
         height: 5.6rem;
-        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_700};
+        background-color: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_800};
         color: ${({ theme }) => theme.COLORS.WHITE};
         font-size: 1.4rem;
         font-weight: 400;
@@ -31,10 +31,5 @@ export const Container = styled.div`
     }
     > svg {
         margin-left: 16px;
-    }
-
-    label { 
-        display: none;
-    }
-    
+    }  
 `
