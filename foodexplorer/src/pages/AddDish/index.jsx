@@ -68,7 +68,7 @@ export function AddDish() {
                             Descrição
                         </label>
 
-                        <textarea name="description" id="description" ></textarea>
+                        <textarea name="description" id="description" placeholder="Descrição do prato"></textarea>
                     </Textarea>
 
                     <Section>
@@ -76,7 +76,6 @@ export function AddDish() {
                     </Section>
                 </Form>
             </Content>
-
 
             <Footer />
         </Container>

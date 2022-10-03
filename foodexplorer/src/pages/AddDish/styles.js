@@ -12,12 +12,24 @@ export const Container = styled.div`
     'content'
     'footer';
 
-    min-height: 100vh
+    height: 100vh;
+
+    @media (max-width: 1040px) {
+        height: 100vh
+    }
 `
 export const Content = styled.div`
     grid-area: content;
 
     padding: 2.5rem 12rem 12.5rem;
+
+    min-height: 100vh;
+
+    @media (max-width: 1040px) {
+        padding: 2.5rem 5rem 4rem;
+
+        width: 100vh
+    }
 `
 
 export const Form = styled.form`
@@ -30,6 +42,10 @@ export const Form = styled.form`
         line-height: 140%;
 
         margin-bottom:3.2rem;
+    }
+
+    @media (max-width: 1040px) {
+        padding: 2.5rem 5rem 4rem;
     }
 `
 
@@ -63,10 +79,9 @@ export const Textarea = styled.div`
     align-items: baseline;
 
     width: 100%;
-
+    font-family: 'Roboto';
+    
     > label {
-        font-family: 'Poppins', sans-serif;
-        font-family: 'Roboto';
         font-style: normal;
         font-weight: 400;
         font-size: 1.6rem;
@@ -81,6 +96,14 @@ export const Textarea = styled.div`
         width: 100%;
         height: 20rem;
 
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 100%;
+
+        padding: 1.9rem 2.4rem;
+
         resize: none; 
 
         background-color: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_800};
@@ -88,6 +111,11 @@ export const Textarea = styled.div`
         outline: 1px solid ${({ theme }) => theme.COLORS.WHITE};
         border-radius: 10px;
 
+        color: ${({ theme }) => theme.COLORS.WHITE};
+
+        &::placeholder{
+            color: ${({ theme }) => theme.COLORS.GREY_TEXT}
+        }
     }
 `
 export const Section = styled.div`
