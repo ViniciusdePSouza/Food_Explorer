@@ -12,6 +12,7 @@ import qrcode from '../../assets/QRcode.svg'
 import orderIcon from '../../assets/orderIcon.svg'
 import checked from '../../assets/checked.svg'
 import delivered from '../../assets/delivered.svg'
+import clock from '../../assets/clock.svg'
 
 export function Payment() {
     return (
@@ -67,13 +68,18 @@ export function Payment() {
 
                         </Form>
 
+                        <PaymentStatus>
+                            <img src={clock} alt="" />
+                            <h1>Esperando pagamento no caixa</h1>
+                        </PaymentStatus>
+
                         <PaymentStatus className='hide'>
                             <img src={checked} alt="" />
                             <h1>Pagamento aprovado!</h1>
                         </PaymentStatus>
 
-                        <PaymentStatus>
-                            <img src={delivered} alt="" />
+                        <PaymentStatus className='hide'>
+                            <img src={delivered} alt=""/>
                             <h1>Pedido entregue!</h1>
                         </PaymentStatus>
                     </PaymentBox>

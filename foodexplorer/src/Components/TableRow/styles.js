@@ -7,6 +7,18 @@ export const Container = styled.div`
 
     grid-template-columns: 1fr 1fr 4fr 1fr;
 
+    .pendent {
+        background-color: ${({ theme }) => theme.COLORS.RED};
+    }
+
+    .preparing{
+        background-color: yellow;
+    }
+
+    .delivered {
+        background-color: green;
+    }
+
     > div {
         display: flex;
         align-items: center;
@@ -40,8 +52,6 @@ export const Container = styled.div`
             height: 8px;
 
             border-radius: 50%;
-
-            background-color: ${({ theme }) => theme.COLORS.RED}
         }
     }
 

@@ -5,7 +5,7 @@ export function TableRow() {
         <Container>
 
             <div id='first-child'>
-                <div></div>
+                <div class='pendent'></div>
                 <span>Pendente</span>
             </div>
             <div>
