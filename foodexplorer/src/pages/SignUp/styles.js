@@ -102,7 +102,7 @@ export const Form = styled.form`
     padding: 6.4rem;
     margin: 7rem 0;
 
-    background: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_800};
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_700};
 
     > h1 {
         font-family: 'Poppins', sans-serif;

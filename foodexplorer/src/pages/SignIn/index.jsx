@@ -1,11 +1,19 @@
 import { Container, Content, Form } from './styles'
 import logo from '../../assets/logo.svg'
 
+import { useNavigate } from 'react-router-dom'
+
 import { FormInput } from '../../Components/FormInput'
 import { Button } from '../../Components/Button'
 import { TxtButton } from '../../Components/TxtButton'
 
 export function SignIn() {
+  const navigate = useNavigate()
+
+  function handleRegister() {
+    navigate(`/register`)
+  }
+
   return (
     <Container>
 
@@ -23,7 +31,7 @@ export function SignIn() {
 
           <Button loading={false} title='Entrar'/>
 
-          <TxtButton title='Criar conta'/>
+          <TxtButton title='Criar conta' onClick={handleRegister}/>
         </Form>
 
 

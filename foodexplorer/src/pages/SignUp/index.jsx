@@ -5,7 +5,15 @@ import { FormInput } from '../../Components/FormInput'
 import { Button } from '../../Components/Button'
 import { TxtButton } from '../../Components/TxtButton'
 
+import { useNavigate } from 'react-router-dom'
+
 export function SignUp() {
+  const navigate = useNavigate()
+
+  function BackToLogin() {
+    navigate(-1)
+  }
+
   return (
     <Container>
 
@@ -24,7 +32,7 @@ export function SignUp() {
 
           <Button loading={false} title='Criar Conta'/>
 
-          <TxtButton title='Já tenho uma conta'/>
+          <TxtButton title='Já tenho uma conta' onClick={BackToLogin}/>
         </Form>
 
 
