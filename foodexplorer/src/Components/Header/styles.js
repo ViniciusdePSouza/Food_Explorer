@@ -22,9 +22,9 @@ export const Container = styled.div`
     }
 
     .button-wrapper{
-        width: 15%;
+        width: 55%;
 
-        margin-left: 50rem;
+        margin-left: 30rem;
     }
 
     grid-area: header;

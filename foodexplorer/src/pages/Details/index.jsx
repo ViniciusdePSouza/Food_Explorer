@@ -5,6 +5,7 @@ import { Header } from '../../Components/Header'
 import { Footer } from '../../Components/Footer'
 
 export function Details() {
+
     return (
         <Container>
             <Header/>

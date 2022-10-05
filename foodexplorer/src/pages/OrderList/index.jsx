@@ -7,7 +7,15 @@ import { Footer } from '../../Components/Footer'
 import { TableHeader } from '../../Components/TableHeader'
 import { TableRow } from '../../Components/TableRow'
 
+import { useNavigate } from 'react-router-dom'
+
 export function OrderList() {
+    const navigate = useNavigate()
+
+    function handleBack() {
+      navigate((-1))
+    }
+
     return (
         <Container>
             <Header/>
@@ -15,8 +23,8 @@ export function OrderList() {
             <header>
                 <h1>Pedidos</h1>
 
-                <HeaderButton>
-                    <img src={leftArrow} alt="" />
+                <HeaderButton onClick={handleBack}>
+                    <img src={leftArrow} alt="Voltar" />
                     voltar
                 </HeaderButton>
             </header>

@@ -3,11 +3,19 @@ import { Container, FavIcon, MinusIcon, PlusIcon } from './styles'
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
 import parmaToast from '../../assets/dishes/parma-toast.png'
 
+import { useNavigate } from 'react-router-dom'
+
 import { Button } from '../../Components/Button'
 
 export function Card() {
+    const navigate = useNavigate()
+
+    function handleDetails() {
+        navigate(`/details/:id`)
+      }
+
     return (
-        <Container>
+        <Container onClick={handleDetails}>
             <img src={parmaToast} alt="" />
 
             <FavIcon>

@@ -5,18 +5,25 @@ import { Footer } from '../../Components/Footer'
 import { InputAddDish } from '../../Components/InputAddDish'
 import { IngredientItem } from '../../Components/IngredientItem'
 
-
 import UploadIcon from '../../assets/uploadIcon.svg'
 import leftArrow from '../../assets/leftarrow.svg'
 
+import { useNavigate } from 'react-router-dom'
+
 export function AddDish() {
+    const navigate = useNavigate()
+
+    function handleBack() {
+      navigate((-1))
+    }
+
     return (
         <Container>
             <Header />
 
             <Content>
                 <header>
-                    <HeaderButton>
+                    <HeaderButton onClick={handleBack}>
                         <img src={leftArrow} alt="" />
                         voltar
                     </HeaderButton>

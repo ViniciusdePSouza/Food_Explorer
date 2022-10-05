@@ -19,11 +19,8 @@ export const Container = styled.div`
     }
 `
 export const Content = styled.div`
-    grid-area: content;
 
     padding: 2.5rem 12rem 12.5rem;
-
-    min-height: 100vh;
 
     @media (max-width: 1040px) {
         padding: 2.5rem 5rem 4rem;

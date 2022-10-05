@@ -9,11 +9,19 @@ import orderIcon from '../../assets/orderIcon.svg'
 import leftArrow from '../../assets/leftarrow.svg'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 
+import { useNavigate } from 'react-router-dom'
+
 export function DetailsBanner() {
+    const navigate = useNavigate()
+
+    function handleBack() {
+      navigate((-1))
+    }
+
     return (
         <Container>
             <header>
-                <HeaderButton>
+                <HeaderButton onClick={handleBack}>
                     <img src={leftArrow} alt="" />
                     voltar
                 </HeaderButton>
