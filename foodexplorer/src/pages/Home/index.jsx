@@ -22,7 +22,6 @@ export function Home() {
       <Content>
         <Banner>
           <div>
-
             <img src={banner} alt="" />
           </div>
 

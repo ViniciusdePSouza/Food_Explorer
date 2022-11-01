@@ -12,7 +12,7 @@ export function Card() {
 
     function handleDetails() {
         navigate(`/details/:id`)
-      }
+    }
 
     return (
         <Container onClick={handleDetails}>
