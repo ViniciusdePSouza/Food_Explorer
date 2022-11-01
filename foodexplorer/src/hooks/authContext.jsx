@@ -1,0 +1,39 @@
+import { createContext, useContext, useState } from 'react'
+
+export const AuthContext = createContext({})
+
+import { api } from '../services/api'
+
+function AuthProvider({ children }){
+    const [data, setData] = useState({})
+
+    async function signIn({ email, password }){
+       try{ 
+           const response = await api.post('/sessions', { email, password })
+           const { user, token } = response.data
+
+           api.defaults.headers.authorization = `Bearer ${token}`
+           setData({ user, token })
+       } catch(e){
+            if(e.response){
+                alert(e.response.data.message)
+            }else{
+                alert('falha ao tentar realizar o login')
+            }
+       }
+    }
+
+    return ( 
+        <AuthContext.Provider value={{ signIn, user: data.user }}>
+            { children }
+        </AuthContext.Provider>
+    )
+}
+
+function useAuth() {
+    const context = useContext(AuthContext) 
+
+    return context
+}
+
+export { AuthProvider, useAuth } 
