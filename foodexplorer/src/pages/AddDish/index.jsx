@@ -1,5 +1,7 @@
 import { Container, HeaderButton, Form, Content, ShorterInput, BiggerInput, Textarea, Section, InputFile, FormButton } from './styles'
 
+import { useState, useEffect } from 'react'
+
 import { Header } from '../../Components/Header'
 import { Footer } from '../../Components/Footer'
 import { InputAddDish } from '../../Components/InputAddDish'
@@ -13,8 +15,20 @@ import { useNavigate } from 'react-router-dom'
 export function AddDish() {
     const navigate = useNavigate()
 
+    const [ingredients, setIngredients] = useState([])
+    const [newIngredient, setNewIngredient] = useState('')
+
+    function handleAddIngredient() {
+        setIngredients(prevState => [...prevState, newIngredient])
+        setNewIngredient('')
+    }
+
+    function handleRemoveIngredient(deletedIngredient) {
+        setIngredients(prevState => prevState.filter(ingredient => ingredient !== deletedIngredient))
+    }
+
     function handleBack() {
-      navigate((-1))
+        navigate((-1))
     }
 
     return (
@@ -38,11 +52,11 @@ export function AddDish() {
                             </label>
 
                             <InputFile>
-                            <img src={UploadIcon} alt="" />
-                            <label htmlFor='dish-picture' id='label-picture'>
-                                Selecione a foto do prato 
-                                <input type='file' id='dish-picture'/>
-                            </label>
+                                <img src={UploadIcon} alt="" />
+                                <label htmlFor='dish-picture' id='label-picture'>
+                                    Selecione a foto do prato
+                                    <input type='file' id='dish-picture' />
+                                </label>
                             </InputFile>
                         </ShorterInput>
                         <BiggerInput>
@@ -57,8 +71,23 @@ export function AddDish() {
                         <BiggerInput>
                             <span>Ingredientes</span>
                             <Section id='ingredients-section'>
-                                <IngredientItem value="Pão Naan" />
-                                <IngredientItem placeholder="Adicionar" isNew />
+                                {
+                                    ingredients.map((ingredient) => (
+                                        <IngredientItem
+                                            value={ingredient}
+                                            onClick={() => { handleRemoveIngredient(ingredient)}}
+                                        />
+                                    ))
+                                }
+
+                                <IngredientItem
+                                    isNew
+                                    placeholder='Nome do ingrediente'
+                                    value={newIngredient}
+                                    onChange={event => setNewIngredient(event.target.value)}
+                                    onClick={handleAddIngredient}
+                                />
+
                             </Section>
                         </BiggerInput>
                         <ShorterInput>
