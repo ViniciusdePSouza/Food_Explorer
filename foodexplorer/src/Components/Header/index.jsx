@@ -1,5 +1,7 @@
 import { Container, LogOut } from './styles'
 
+import { useAuth } from '../../hooks/authContext'
+
 import logo from '../../assets/logo.svg'
 import orderIcon from '../../assets/orderIcon.svg'
 import logout from '../../assets/logout.svg'
@@ -12,6 +14,8 @@ import { useNavigate } from 'react-router-dom'
 
 export function Header() {
     const navigate = useNavigate()
+
+    const { signOut } = useAuth()
 
     function handleAddDish() {
       navigate(`/add`)
@@ -32,8 +36,8 @@ export function Header() {
                 <Button loading={false} title="Meu Pedido" picture={orderIcon}  onClick={handleOrders}/>
             </div>
 
-            <LogOut>
-                <img src={logout} alt="" />
+            <LogOut onClick={signOut}>
+                <img src={logout} alt=""/>
             </LogOut>
         </Container>
     )
