@@ -2,6 +2,8 @@ import { Container, HeaderButton, Form, Content, ShorterInput, BiggerInput, Text
 
 import { useState, useEffect } from 'react'
 
+import { api } from '../../services/api'
+
 import { Header } from '../../Components/Header'
 import { Footer } from '../../Components/Footer'
 import { InputAddDish } from '../../Components/InputAddDish'
@@ -15,8 +17,15 @@ import { useNavigate } from 'react-router-dom'
 export function AddDish() {
     const navigate = useNavigate()
 
+    let id = 8
+
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState('')
+    const [name, setName] = useState('')
+    const [price, setPrice] = useState('')
+    const [description, setDescription] = useState('')
+    const [photo, setPhoto] = useState('')
+    const type = 'main'
 
     function handleAddIngredient() {
         setIngredients(prevState => [...prevState, newIngredient])
@@ -29,6 +38,43 @@ export function AddDish() {
 
     function handleBack() {
         navigate((-1))
+    }
+
+    function handleDishPhoto(event) {
+        const file = event.target.files[0]
+
+        const imgPreview = URL.createObjectURL(file)
+
+        setPhoto(imgPreview)
+    }
+
+
+    async function handleNewDish(event) {
+        event.preventDefault();
+
+        if(!name ||!price || !description || !photo){
+           return alert('Por favor preencha todos os campos para adicionar um prato')
+        }
+
+        console.log( name, description, photo, price, type, ingredients)
+        
+        await api.post('/dishes', {
+            name,
+            description,
+            price,
+            type,
+            ingredients
+        })
+
+        await api.patch(`/dishes/photo/${id}`, {
+            photo
+        })
+
+        id++
+
+        alert('prato adicionado com sucesso')
+
+        navigate('/')
     }
 
     return (
@@ -55,7 +101,7 @@ export function AddDish() {
                                 <img src={UploadIcon} alt="" />
                                 <label htmlFor='dish-picture' id='label-picture'>
                                     Selecione a foto do prato
-                                    <input type='file' id='dish-picture' />
+                                    <input type='file' id='dish-picture' onChange={handleDishPhoto}/>
                                 </label>
                             </InputFile>
                         </ShorterInput>
@@ -64,7 +110,7 @@ export function AddDish() {
                                 Nome do Prato
                             </label>
 
-                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='name' name='name' />
+                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='name' name='name' onChange={event => setName(event.target.value)}/>
                         </BiggerInput>
                     </Section>
                     <Section>
@@ -95,7 +141,7 @@ export function AddDish() {
                                 Preço
                             </label>
 
-                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='price' name='price' />
+                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='price' name='price' onChange={event => setPrice(event.target.value)}/>
                         </ShorterInput>
                     </Section>
 
@@ -104,11 +150,11 @@ export function AddDish() {
                             Descrição
                         </label>
 
-                        <textarea name="description" id="description" placeholder="Descrição do prato"></textarea>
+                        <textarea name="description" id="description" placeholder="Descrição do prato" onChange={event => setDescription(event.target.value)}></textarea>
                     </Textarea>
 
                     <Section>
-                        <FormButton>Adicionar Prato</FormButton>
+                        <FormButton onClick={handleNewDish}>Adicionar Prato</FormButton>
                     </Section>
                 </Form>
             </Content>
