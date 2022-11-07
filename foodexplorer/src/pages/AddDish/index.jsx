@@ -1,6 +1,6 @@
 import { Container, HeaderButton, Form, Content, ShorterInput, BiggerInput, Textarea, Section, InputFile, FormButton } from './styles'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 import { api } from '../../services/api'
 
@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom'
 export function AddDish() {
     const navigate = useNavigate()
 
-    let id = 8
+    let id = 11
 
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState('')
@@ -43,21 +43,17 @@ export function AddDish() {
     function handleDishPhoto(event) {
         const file = event.target.files[0]
 
-        const imgPreview = URL.createObjectURL(file)
-
-        setPhoto(imgPreview)
+        setPhoto(file)
     }
 
 
     async function handleNewDish(event) {
         event.preventDefault();
 
-        if(!name ||!price || !description || !photo){
-           return alert('Por favor preencha todos os campos para adicionar um prato')
+        if (!name || !price || !description || !photo) {
+            return alert('Por favor preencha todos os campos para adicionar um prato')
         }
 
-        console.log( name, description, photo, price, type, ingredients)
-        
         await api.post('/dishes', {
             name,
             description,
@@ -66,15 +62,19 @@ export function AddDish() {
             ingredients
         })
 
-        await api.patch(`/dishes/photo/${id}`, {
-            photo
-        })
+        const fileUploadForm = new FormData()
+        fileUploadForm.append('photo', photo)
+
+        console.log(photo)
+        
+        console.log(fileUploadForm)
+        await api.patch(`/dishes/photo/${id}`, fileUploadForm)
 
         id++
 
         alert('prato adicionado com sucesso')
 
-        navigate('/')
+        // navigate('/')
     }
 
     return (
@@ -101,7 +101,7 @@ export function AddDish() {
                                 <img src={UploadIcon} alt="" />
                                 <label htmlFor='dish-picture' id='label-picture'>
                                     Selecione a foto do prato
-                                    <input type='file' id='dish-picture' onChange={handleDishPhoto}/>
+                                    <input type='file' id='dish-picture' onChange={handleDishPhoto} />
                                 </label>
                             </InputFile>
                         </ShorterInput>
@@ -110,7 +110,7 @@ export function AddDish() {
                                 Nome do Prato
                             </label>
 
-                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='name' name='name' onChange={event => setName(event.target.value)}/>
+                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='name' name='name' onChange={event => setName(event.target.value)} />
                         </BiggerInput>
                     </Section>
                     <Section>
@@ -121,7 +121,7 @@ export function AddDish() {
                                     ingredients.map((ingredient) => (
                                         <IngredientItem
                                             value={ingredient}
-                                            onClick={() => { handleRemoveIngredient(ingredient)}}
+                                            onClick={() => { handleRemoveIngredient(ingredient) }}
                                         />
                                     ))
                                 }
@@ -141,7 +141,7 @@ export function AddDish() {
                                 Preço
                             </label>
 
-                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='price' name='price' onChange={event => setPrice(event.target.value)}/>
+                            <InputAddDish placeholder="Ex.: Salada Ceasar" type="text" id='price' name='price' onChange={event => setPrice(event.target.value)} />
                         </ShorterInput>
                     </Section>
 
