@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom'
 export function AddDish() {
     const navigate = useNavigate()
 
-    let id = 11
+    let id = 1
 
     const [ingredients, setIngredients] = useState([])
     const [newIngredient, setNewIngredient] = useState('')

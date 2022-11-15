@@ -7,11 +7,11 @@ import { useNavigate } from 'react-router-dom'
 
 import { Button } from '../../Components/Button'
 
-export function Card() {
+export function Card({ data, ...rest }) {
     const navigate = useNavigate()
 
     function handleDetails() {
-        navigate(`/details/:id`)
+        navigate(`/details/${data.id}`)
     }
 
     return (
@@ -22,11 +22,11 @@ export function Card() {
                 <FiHeart/>
             </FavIcon>
 
-            <h1>Torrada de Parma</h1>
+            <h1>{data.name}</h1>
 
-            <p>Presunto de parma e rúcula em um pão com fermentação natural.</p>
+            <p>{data.description}</p>
 
-            <h2>R$ 25,97</h2>
+            <h2>{data.price}</h2>
 
             <div>
                 <MinusIcon>
