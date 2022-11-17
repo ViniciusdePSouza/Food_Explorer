@@ -10,12 +10,24 @@ import leftArrow from '../../assets/leftarrow.svg'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 
 import { useNavigate } from 'react-router-dom'
+import {useState} from 'react'
 
-export function DetailsBanner() {
+export function DetailsBanner({ data, ...rest }) {
     const navigate = useNavigate()
+    const [counter, setCounter] = useState(1)
 
     function handleBack() {
       navigate((-1))
+    }
+
+    function handleIncrease(){
+        setCounter(counter + 1) 
+    }
+    function handleDecrease(){
+        if(counter <= 1) {
+            return 
+        }
+        setCounter(counter - 1)
     }
 
     return (
@@ -29,12 +41,12 @@ export function DetailsBanner() {
 
             <Content>
 
-                <img src={parmaToast} alt="" />
+                <img src={`http://localhost:3333/files/${data.photo}`} alt="" />
 
                 <div>
-                    <h1>Salada Ravanello</h1>
+                    <h1>{data.name}</h1>
 
-                    <h3>Rabanetes, folhas verdes e molho agridoce salpicados com gergelim.</h3>
+                    <h3>{data.description}</h3>
 
                     <IngredientsWrapper>
 
@@ -61,15 +73,15 @@ export function DetailsBanner() {
                     </IngredientsWrapper>
 
                     <ButtonWrapper>
-                        <h2>R$ 25,97</h2>
+                        <h2>{data.price}</h2>
 
-                        <MinusIcon>
+                        <MinusIcon onClick={handleDecrease}>
                             <FiMinus />
                         </MinusIcon>
 
-                        <span>01</span>
+                        <span>{counter}</span>
 
-                        <PlusIcon>
+                        <PlusIcon onClick={handleIncrease}>
                             <FiPlus />
                         </PlusIcon>
 

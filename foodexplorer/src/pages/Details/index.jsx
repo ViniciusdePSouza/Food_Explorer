@@ -7,7 +7,7 @@ import { Footer } from '../../Components/Footer'
 import { api } from '../../services/api'
 
 import { useParams } from 'react-router-dom'
-import { useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 export function Details() {
     const params = useParams()
@@ -25,11 +25,17 @@ export function Details() {
 
     return (
         <Container>
-            <Header/>
+            <Header />
 
-            <DetailsBanner/>
+            <DetailsBanner data={{
+                    name: 'teste',
+                    price: '21,50',
+                    details: 'teste de detalhes',
+                    photo: '59aeff4e8752f4d12586-Bolo%20de%20Damasco.png'
+                }}
+            />
 
-            <Footer/>
+            <Footer />
         </Container>
     )
 }
