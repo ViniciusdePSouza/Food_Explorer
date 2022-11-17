@@ -12,7 +12,6 @@ import { api } from '../../services/api'
 export function Card({ data, ...rest }) {
     const navigate = useNavigate()
     const [counter, setCounter] = useState(1)
-    const [photo, setPhoto] = useState(1)
 
     function handleDetails() {
         navigate(`/details/${data.id}`)
@@ -27,18 +26,10 @@ export function Card({ data, ...rest }) {
         }
         setCounter(counter - 1)
     }
-    
-    async function fetchPhoto(photo) {
-        const response = await api.get(`/files/${photo}`)
-        return response
-    }
-    useEffect(() => {
-        fetchPhoto(data.photo)
-    }, [photo])
 
     return (
         <Container>
-            <img src={photo} alt="" onClick={handleDetails}/>
+            <img src={`http://localhost:3333/files/${data.photo}`} alt="" onClick={handleDetails}/>
 
             <FavIcon>
                 <FiHeart/>
