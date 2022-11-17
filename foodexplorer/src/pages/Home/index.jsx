@@ -69,8 +69,8 @@ export function Home() {
         <Carousel cols={3} rows={1} loop={true} gap={0}>
           {
             mainDishes.map(dish => (
-              <Carousel.Item>
-                <Card data={dish} key={dish.id}/>
+              <Carousel.Item key={dish.id}>
+                <Card data={dish}/>
               </Carousel.Item>
             ))
           }
@@ -81,8 +81,8 @@ export function Home() {
         <Carousel cols={3} rows={1} loop={true} gap={0}>
           {
             desserts.map(dessert => (
-              <Carousel.Item>
-                <Card data={dessert} key={dessert.id}/>
+              <Carousel.Item key={dessert.id}>
+                <Card data={dessert}/>
               </Carousel.Item>
             ))
           }
@@ -93,8 +93,8 @@ export function Home() {
         <Carousel cols={3} rows={1} loop={true} gap={0}>
           {
             drinks.map(drink => (
-              <Carousel.Item>
-                <Card data={drink} key={drink.id}/>
+              <Carousel.Item key={drink.id}>
+                <Card data={drink}/>
               </Carousel.Item>
             ))
           }
