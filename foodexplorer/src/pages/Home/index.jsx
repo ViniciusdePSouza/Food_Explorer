@@ -28,24 +28,21 @@ export function Home() {
     async function fetchMainDishes() {
       const response = await api.get(`/getters/main`)
       setMainDishes(response.data)
-
     }
     async function fetchDrinks() {
       const response = await api.get(`/getters/drink`)
       setDrinks(response.data)
-
     }
     async function fetchDesserts() {
       const response = await api.get(`/getters/dessert`)
       setDesserts(response.data)
-
     }
 
     fetchMainDishes()
     fetchDesserts()
     fetchDrinks()
-  }, [])
 
+  }, [])
 
   return (
     <Container>
@@ -73,8 +70,7 @@ export function Home() {
           {
             mainDishes.map(dish => (
               <Carousel.Item>
-                <Card data={dish}
-                 />
+                <Card data={dish} key={dish.id}/>
               </Carousel.Item>
             ))
           }
@@ -86,7 +82,7 @@ export function Home() {
           {
             desserts.map(dessert => (
               <Carousel.Item>
-                <Card data={dessert} />
+                <Card data={dessert} key={dessert.id}/>
               </Carousel.Item>
             ))
           }
@@ -98,7 +94,7 @@ export function Home() {
           {
             drinks.map(drink => (
               <Carousel.Item>
-                <Card data={drink} />
+                <Card data={drink} key={drink.id}/>
               </Carousel.Item>
             ))
           }

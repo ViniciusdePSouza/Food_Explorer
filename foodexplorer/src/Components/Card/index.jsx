@@ -3,27 +3,31 @@ import { Container, FavIcon, MinusIcon, PlusIcon } from './styles'
 import { FiHeart, FiMinus, FiPlus } from 'react-icons/fi'
 
 import { useNavigate } from 'react-router-dom'
-import  {useState, useEffect } from 'react'
+import  { useState, useEffect } from 'react'
 
 import { Button } from '../../Components/Button'
 
 export function Card({ data, ...rest }) {
     const navigate = useNavigate()
-
-    // const [photo, setPhoto] = useState('')
+    const [counter, setCounter] = useState(1)
 
     function handleDetails() {
         navigate(`/details/${data.id}`)
     }
 
-    // useEffect(() => {
-    //     const IMG = URL.createObjectURL(data.photo)
-    //     console.log(IMG)
-    //   }, [])
+    function handleIncrease(){
+        setCounter(counter + 1) 
+    }
+    function handleDecrease(){
+        if(counter <= 1) {
+            return 
+        }
+        setCounter(counter - 1)
+    }
 
     return (
-        <Container onClick={handleDetails}>
-            <img src={data.photo} alt="" />
+        <Container>
+            <img src={data.photo} alt="" onClick={handleDetails}/>
 
             <FavIcon>
                 <FiHeart/>
@@ -36,13 +40,13 @@ export function Card({ data, ...rest }) {
             <h2>{data.price}</h2>
 
             <div>
-                <MinusIcon>
+                <MinusIcon onClick={handleDecrease}>
                     <FiMinus/>
                 </MinusIcon>
 
-                <span>01</span>
+                <span>{counter}</span>
 
-                <PlusIcon>
+                <PlusIcon onClick={handleIncrease}>
                     <FiPlus/>
                 </PlusIcon>
 
