@@ -19,6 +19,11 @@ export const Container = styled.div`
         background-color: green;
     }
 
+    .center_text{
+        width: 100%;
+        text-align: center;
+    }
+
     > div {
         display: flex;
         align-items: center;

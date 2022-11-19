@@ -45,7 +45,7 @@ export function DetailsBanner({ data, ...rest }) {
                     if (error.response) {
                         alert(error.response.data.message)
                     } else {
-                        alert('erro ao tentar o cadastro')
+                        alert('erro ao tentar o fazer o pedido')
                     }
                 })
 

@@ -64,10 +64,7 @@ export function AddDish() {
 
         const fileUploadForm = new FormData()
         fileUploadForm.append('photo', photo)
-
-        console.log(photo)
         
-        console.log(fileUploadForm)
         await api.patch(`/dishes/photo/${id}`, fileUploadForm)
 
         id++

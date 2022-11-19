@@ -9,36 +9,60 @@ import { TableRow } from '../../Components/TableRow'
 
 import { useNavigate } from 'react-router-dom'
 
+import { useState, useEffect } from 'react'
+
+import { useAuth } from '../../hooks/authContext'
+
+import { api } from '../../services/api'
+
 export function OrderList() {
     const navigate = useNavigate()
 
+    const { user } = useAuth()
+
+    const [orders, setOrder] = useState([])
+
     function handleBack() {
-      navigate((-1))
+        navigate((-1))
     }
+
+    useEffect(() => {
+        async function fetchOrders() {
+            const response = await api.get(`/orders?user_id=${user.id}`)
+
+            setOrder(response.data)
+        }
+
+        console.log(user.id)
+
+        fetchOrders()
+    }, [])
 
     return (
         <Container>
-            <Header/>
-        <Content>
-            <header>
-                <h1>Pedidos</h1>
+            <Header />
+            <Content>
+                <header>
+                    <h1>Pedidos</h1>
 
-                <HeaderButton onClick={handleBack}>
-                    <img src={leftArrow} alt="Voltar" />
-                    voltar
-                </HeaderButton>
-            </header>
+                    <HeaderButton onClick={handleBack}>
+                        <img src={leftArrow} alt="Voltar" />
+                        voltar
+                    </HeaderButton>
+                </header>
 
-            <main>
-                <TableHeader/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-                <TableRow/>
-            </main>
-        </Content>
+                <main>
+                    <TableHeader />
+                    {
+                        orders.length > 0 && orders.map((order) => (
+                            <TableRow data={order} key={order.id}/>
+                        ))
+                    }
 
-        <Footer/>
+                </main>
+            </Content>
+
+            <Footer />
 
         </Container>
     )
