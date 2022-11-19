@@ -13,16 +13,23 @@ import plusIcon from '../../assets/plus.svg'
 import { useNavigate } from 'react-router-dom'
 
 export function Header() {
+    const { user, signOut } = useAuth()
     const navigate = useNavigate()
 
-    const { signOut } = useAuth()
-
     function handleAddDish() {
-      navigate(`/add`)
+        if (user.isAdmin !== 1) {
+            return alert('Apenas Adms são autorizados a adicionar pratos')
+        } else{
+            navigate(`/add`)
+        }
     }
 
     function handleOrders() {
-        navigate('/orders')
+        if(user.isAdm !== 1) {
+            navigate('/orderadm')
+        } else {
+            navigate('/orders')
+        }
     }
 
     return (
