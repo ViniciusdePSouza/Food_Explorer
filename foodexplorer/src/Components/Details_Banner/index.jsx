@@ -11,12 +11,16 @@ import { api } from '../../services/api'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
+import { useAuth } from '../../hooks/authContext'
+
 export function DetailsBanner({ data, ...rest }) {
     const navigate = useNavigate()
     const [counter, setCounter] = useState(1)
     const params = useParams()
     const [ingredients, setIngredients] = useState([])
     const [ingredientsData, setIngredientsData] = useState([])
+
+    const { user } = useAuth()
 
     function handleBack() {
         navigate((-1))
@@ -30,6 +34,24 @@ export function DetailsBanner({ data, ...rest }) {
             return
         }
         setCounter(counter - 1)
+    }
+
+    async function handleOrder() {
+
+        for (let i = 0; i < counter ; i++) {
+            api.post('orders', { status: 'pending', user_id: user.id, details: data.name })
+                .then(() => console.log(`Pedido ${data.name} adicionado ao carrinho`))
+                .catch(error => {
+                    if (error.response) {
+                        alert(error.response.data.message)
+                    } else {
+                        alert('erro ao tentar o cadastro')
+                    }
+                })
+
+        }
+
+        alert('Pedido feito com sucesso')
     }
 
     useEffect(() => {
@@ -49,13 +71,10 @@ export function DetailsBanner({ data, ...rest }) {
                             id: response.data.id,
                             photo: response.data.photo
                         }
-                        
-
+                    
                         setIngredientsData(prevState => {
-                            return {...prevState, ...dataIngredients}
+                            return {...prevState, dataIngredients}
                         })
-                        
-                        
                     }
                     
                     fetchIngredientsData()
@@ -113,7 +132,7 @@ export function DetailsBanner({ data, ...rest }) {
                         </PlusIcon>
 
                         <div>
-                            <Button loading={false} title="Incluir" picture={orderIcon} />
+                            <Button loading={false} title="Incluir" picture={orderIcon} onClick={handleOrder} />
                         </div>
 
                     </ButtonWrapper>
