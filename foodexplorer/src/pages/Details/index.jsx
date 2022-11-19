@@ -12,12 +12,13 @@ import { useState, useEffect } from 'react'
 export function Details() {
     const params = useParams()
     const [data, setData] = useState(null)
-
+    
     useEffect(() => {
         async function fetchDish() {
             const response = await api.get(`/dishes/${params.id}`)
             setData(response.data)
             console.log(data)
+
         }
 
         fetchDish()
@@ -27,13 +28,7 @@ export function Details() {
         <Container>
             <Header />
 
-            <DetailsBanner data={{
-                    name: 'teste',
-                    price: '21,50',
-                    details: 'teste de detalhes',
-                    photo: '59aeff4e8752f4d12586-Bolo%20de%20Damasco.png'
-                }}
-            />
+            <DetailsBanner data={data}/>
 
             <Footer />
         </Container>
