@@ -17,8 +17,6 @@ export function Details() {
         async function fetchDish() {
             const response = await api.get(`/dishes/${params.id}`)
             setData(response.data)
-            console.log(data)
-
         }
 
         fetchDish()
@@ -28,7 +26,9 @@ export function Details() {
         <Container>
             <Header />
 
-            <DetailsBanner data={data}/>
+            { data &&
+                <DetailsBanner data={data}/>
+            }
 
             <Footer />
         </Container>

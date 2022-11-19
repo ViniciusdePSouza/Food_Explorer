@@ -2,33 +2,71 @@ import { Container, Content, MinusIcon, PlusIcon, IngredientsWrapper, Ingredient
 
 import { Button } from '../Button'
 
-import parmaToast from '../../assets/dishes/parma-toast.png'
-import lettuce from '../../assets/ingredients/lettuce.png'
-
 import orderIcon from '../../assets/orderIcon.svg'
 import leftArrow from '../../assets/leftarrow.svg'
 import { FiMinus, FiPlus } from 'react-icons/fi'
 
-import { useNavigate } from 'react-router-dom'
-import {useState} from 'react'
+import { api } from '../../services/api'
+
+import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 export function DetailsBanner({ data, ...rest }) {
     const navigate = useNavigate()
     const [counter, setCounter] = useState(1)
+    const params = useParams()
+    const [ingredients, setIngredients] = useState([])
+    const [ingredientsData, setIngredientsData] = useState([])
 
     function handleBack() {
-      navigate((-1))
+        navigate((-1))
     }
 
-    function handleIncrease(){
-        setCounter(counter + 1) 
+    function handleIncrease() {
+        setCounter(counter + 1)
     }
-    function handleDecrease(){
-        if(counter <= 1) {
-            return 
+    function handleDecrease() {
+        if (counter <= 1) {
+            return
         }
         setCounter(counter - 1)
     }
+
+    useEffect(() => {
+        async function fetchIngredients() {
+            const response = await api.get(`/dishes/${params.id}`)
+            const ingredientsArray = response.data.ingredients.split(',')
+
+            setIngredients(ingredientsArray)
+
+            
+            ingredientsArray.forEach(ingredient => {
+                async function fetchIngredientsData() {
+                        const response = await api.get(`/ingredients/${ingredient}`)
+                        
+                        const dataIngredients = {
+                            name: response.data.name,
+                            id: response.data.id,
+                            photo: response.data.photo
+                        }
+                        
+
+                        setIngredientsData(prevState => {
+                            return {...prevState, ...dataIngredients}
+                        })
+                        
+                        
+                    }
+                    
+                    fetchIngredientsData()
+                }
+
+                )
+            }
+            
+        fetchIngredients()
+
+        }, [])
 
     return (
         <Container>
@@ -50,25 +88,14 @@ export function DetailsBanner({ data, ...rest }) {
 
                     <IngredientsWrapper>
 
-                        <IngredientCard>
-                            <img src={lettuce} alt="" />
-                            <h5>Alface</h5>
-                        </IngredientCard>
-
-                        <IngredientCard>
-                            <img src={lettuce} alt="" />
-                            <h5>Alface</h5>
-                        </IngredientCard>
-
-                        <IngredientCard>
-                            <img src={lettuce} alt="" />
-                            <h5>Alface</h5>
-                        </IngredientCard>
-
-                        <IngredientCard>
-                            <img src={lettuce} alt="" />
-                            <h5>Alface</h5>
-                        </IngredientCard>
+                        {
+                            ingredients && ingredients.map(ingredient => (
+                                <IngredientCard >
+                                    <img src={`http://localhost:3333/files/${ingredient.photo}`} alt="" />
+                                    <h5>{ingredient}</h5>
+                                </IngredientCard>
+                            ))
+                        }
 
                     </IngredientsWrapper>
 
