@@ -6,16 +6,16 @@ export function TableRow({order, ...rest}) {
 
             <div id='first-child'>
                 <div className='pendent'></div>
-                <span>Pendente</span>
+                <span>{order.status}</span>
             </div>
             <div>
-                <span className='center_text'>4</span>
+                <span className='center_text'>{order.id}</span>
             </div>
             <div >
-                <span>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</span>
+                <span >{`1x: ${order.details}`}</span>
             </div>
             <div >
-                <span className='center_text'>20/05 às 18h00</span>
+                <span className='center_text'>{order.created_at}</span>
             </div>
             
         </Container>

@@ -55,7 +55,7 @@ export function OrderList() {
                     <TableHeader />
                     {
                         orders.length > 0 && orders.map((order) => (
-                            <TableRow data={order} key={order.id}/>
+                            <TableRow order={order} key={order.id}/>
                         ))
                     }
 
