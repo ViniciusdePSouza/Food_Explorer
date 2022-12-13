@@ -2,13 +2,19 @@ import { Container } from './styles'
 
 import downArrow from '../../assets/downArrow.svg'
 
-export function TableRowAdm() {
+import { api } from '../../services/api'
+
+export function TableRowAdm({order, ...rest}) {
+    async function handleUpdateStatus(id) {
+        await api.put(`http://localhost:3333/orders/${id}`)
+    }
+
     return (
         <Container>
 
             <div id='first-child'>
                 <div className='select-box'>
-                    <select name="option" id="option">
+                    <select name="option" id="option" value={order.status} onChange={handleUpdateStatus(order.id)}>
                         <option value="">Selecione</option>
                         <option value="1">Pendente</option>
                         <option value="2">Preparando</option>
@@ -18,13 +24,13 @@ export function TableRowAdm() {
                 </div>
             </div>
             <div>
-                <span>00000001</span>
+                <span>00000{order.id}</span>
             </div>
             <div >
-                <span>1 x Salada Radish, 1 x Torradas de Parma, 1 x Chá de Canela, 1 x Suco de Maracujá</span>
+                <span>{order.details}</span>
             </div>
             <div >
-                <span>20/05 às 18h00</span>
+                <span>{order.created_at}</span>
             </div>
 
         </Container>

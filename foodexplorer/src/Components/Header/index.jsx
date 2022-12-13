@@ -17,15 +17,15 @@ export function Header() {
     const navigate = useNavigate()
 
     function handleAddDish() {
-        if (user.isAdmin !== 1) {
-            return alert('Apenas Adms são autorizados a adicionar pratos')
-        } else{
+        if (user.isAdm === 1) {
             navigate(`/add`)
+        } else{
+            return alert('Apenas Adms são autorizados a adicionar pratos')
         }
     }
 
     function handleOrders() {
-        if(user.isAdm !== 1) {
+        if(user.isAdm === 1) {
             navigate('/orderadm')
         } else {
             navigate('/orders')
