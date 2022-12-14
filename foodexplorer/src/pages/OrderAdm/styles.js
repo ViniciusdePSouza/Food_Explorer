@@ -36,6 +36,10 @@ export const Content = styled.div`
             font-size: 3.2rem;
             line-height: 140%;
         }
+
+        .button-wrapper {
+            width: 30%;
+        }
     }
 
     >main {

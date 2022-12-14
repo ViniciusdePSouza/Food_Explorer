@@ -8,6 +8,7 @@ import { TableHeader } from '../../Components/TableHeader'
 import { TableRowAdm } from '../../Components/TableRowAdm'
 import { Input } from '../../Components/Input'
 import { FiSearch } from 'react-icons/fi'
+import { Button } from '../../Components/Button'
 
 
 import { useNavigate } from 'react-router-dom'
@@ -29,9 +30,13 @@ export function OrderAdm() {
         navigate((-1))
     }
 
+    function handlePayment() {
+        navigate(('/payment'))
+    }
+
     useEffect(() => {
         async function fetchOrders() {
-            
+
             const response = await api.get(`/orders?user_id=${clientID}`)
             setOrder(response.data)
             console.log(orders)
@@ -42,33 +47,37 @@ export function OrderAdm() {
 
     return (
         <Container>
-            <Header/>
-        <Content>
-            <header>
-                <h1>Pedidos</h1>
+            <Header />
+            <Content>
+                <header>
+                    <h1>Pedidos</h1>
 
-                <div>
-                 <Input icon={FiSearch} placeholder="Número do ID do cliente" type="number" onChange={e => setClientID(e.target.value)} />
-                </div>
+                    <div>
+                        <Input icon={FiSearch} placeholder="Número do ID do cliente" type="number" onChange={e => setClientID(e.target.value)} />
+                    </div>
 
-                <HeaderButton onClick={handleBack}>
-                    <img src={leftArrow} alt="" />
-                    voltar
-                </HeaderButton>
-            </header>
+                    <div class='button-wrapper'>
+                        <Button loading={false} title="Ir para pagamento" onClick={handlePayment} />
+                    </div>
 
-            <main>
+                    <HeaderButton onClick={handleBack}>
+                        <img src={leftArrow} alt="" />
+                        voltar
+                    </HeaderButton>
+                </header>
+
+                <main>
                     <TableHeader />
                     {
                         orders.length > 0 && orders.map((order) => (
-                            <TableRowAdm order={order} key={order.id}/>
+                            <TableRowAdm order={order} key={order.id} />
                         ))
                     }
 
                 </main>
-        </Content>
+            </Content>
 
-        <Footer/>
+            <Footer />
 
         </Container>
     )
