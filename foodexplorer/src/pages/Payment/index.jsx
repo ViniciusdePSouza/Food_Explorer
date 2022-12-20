@@ -27,26 +27,24 @@ export function Payment() {
 
     const [orders, setOrder] = useState([])
     const [clientID, setClientID] = useState()
-    const [pixStatus, setPixStatus] = useState(false)
-    const [creditStatus, setCreditStatus] = useState(false)
-    const [pixBtn, setPixBtn] = useState(false)
-    const [creditBtn, setCreditBtn] = useState(false)
+    const [pixStatus, setPixStatus] = useState('')
+    const [creditStatus, setCreditStatus] = useState('')
+    const [pixBtn, setPixBtn] = useState('')
+    const [creditBtn, setCreditBtn] = useState('')
 
-    let checkPixStatus = pixStatus ? 'hide' : null 
-    let checkCreditStatus = creditStatus ? 'hide' : null
+    function handleClickPix(){
+        setPixStatus = ''
+        setCreditStatus = 'hide'
+        setPixBtn = 'selected'
+        setCreditBtn = ''
+    }
 
-    let checkPixBtnStatus = pixBtn ? 'selected' : null 
-    let checkCreditBtnStatus = creditBtn ? 'selected' : null
+    function handleCreditClick(){
+        setCreditStatus = ''
+        setPixStatus = 'hide'
 
-    function handleClick(){
-        checkPixStatus = !checkPixStatus
-        checkCreditStatus = !checkCreditStatus
-
-        checkPixBtnStatus = !checkPixStatus
-        checkCreditBtnStatus = !checkCreditStatus
-
-        console.log(`valor Pix: ${checkPixStatus} |||| valor Crédito: ${checkCreditStatus}`)
-        console.log(`valor BtnPix: ${checkPixBtnStatus} |||| valor BtnCrédito: ${checkCreditBtnStatus}`)
+        setPixBtn = ''
+        setCreditBtn = 'selected'
     }
 
     useEffect(() => {
@@ -84,11 +82,11 @@ export function Payment() {
                 <Section>
                     <h1>Pagamento</h1>
                     <ButtonWrapper>
-                        <button id='fist-child' className='selected' onClick={handleClick}>
+                        <button id='fist-child' className={pixBtn} onClick={handleClickPix}>
                             <img src={pix} alt="" />
                             PIX
                         </button>
-                        <button onClick={handleClick} >
+                        <button onClick className={creditBtn}>
                             <img src={credit} alt="" />
                             CRÉDITO
                         </button>
@@ -96,7 +94,7 @@ export function Payment() {
                     <PaymentBox>
                         <img src={qrcode} alt="QR code na tela" className='hide' />
 
-                        <Form className='hide'>
+                        <Form className>
 
                             <label htmlFor="card-number">
                                 Número do cartão
@@ -120,8 +118,8 @@ export function Payment() {
 
                         </Form>
 
-                        <PaymentStatus>
-                            <img src={clock} alt="" onClick={handleClick}/>
+                        <PaymentStatus className="hide">
+                            <img src={clock} alt="" onClick/>
                             <h1>Esperando pagamento no caixa</h1>
                         </PaymentStatus>
 
@@ -130,7 +128,7 @@ export function Payment() {
                             <h1>Pagamento aprovado!</h1>
                         </PaymentStatus>
 
-                        <PaymentStatus className='hide'  onClick={handleClick}>
+                        <PaymentStatus className='hide'  onClick>
                             <img src={delivered} alt=""/>
                             <h1>Pedido entregue!</h1>
                         </PaymentStatus>

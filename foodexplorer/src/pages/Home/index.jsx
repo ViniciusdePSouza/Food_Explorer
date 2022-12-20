@@ -20,10 +20,14 @@ import { api } from '../../services/api'
 
 export function Home() {
   const [search, setSearch] = useState('')
+  const [searchedDishes, setSearchedDishes] = useState([])
   const [mainDishes, setMainDishes] = useState([])
   const [drinks, setDrinks] = useState([])
   const [desserts, setDesserts] = useState([])
 
+  const [searchResults, setSearchResults] = useState([])
+
+  
   useEffect(() => {
     async function fetchMainDishes() {
       const response = await api.get(`/getters/main`)
@@ -44,6 +48,30 @@ export function Home() {
 
   }, [])
 
+  useEffect(() => {
+    // async function fetchDishesByName() {
+    //   const response = await api.get(`/dishes/${search}`)
+      
+    //   setSearchedDishes(response.data)
+      
+    //   console.log(response.data)
+    // }
+
+    // fetchDishesByName()
+    
+    let resultsMainDishes = mainDishes.filter(dish => dish.name.toLowerCase().includes(search.toLowerCase()))
+    let resultsDrinks = drinks.filter(drink => drink.name.toLowerCase().includes(search.toLowerCase()))
+    let resultsDesserts = desserts.filter(dessert => dessert.name.toLowerCase().includes(search.toLowerCase()))
+    
+    const result = [].concat(resultsMainDishes, resultsDrinks, resultsDesserts)
+    
+    setSearchResults(result)
+    console.log(search)
+    console.log(result)
+    console.log(searchResults)
+    
+  }, [search])
+
   return (
     <Container>
       <Header />
@@ -61,9 +89,20 @@ export function Home() {
         </Banner>
 
         <div className="div-input">
-          <Input icon={FiSearch} placeholder="Pesquisar prato nos favoritos" type="text" onChange={e => setSearchValue(e.target.value)} />
+          <Input icon={FiSearch} placeholder="Pesquisar prato nos favoritos" type="text" onChange={e => setSearch(e.target.value)} />
         </div>
 
+        <h1>Busca</h1>
+
+        <Carousel cols={3} rows={1} loop={true} gap={0} className="carrousel-wrapper">
+          {
+            searchResults.map(dish => (
+              <Carousel.Item key={dish.id}>
+                <Card data={dish}/>
+              </Carousel.Item>
+            ))
+          }
+        </Carousel>
         <h1>Pratos Principais</h1>
 
         <Carousel cols={3} rows={1} loop={true} gap={0}>

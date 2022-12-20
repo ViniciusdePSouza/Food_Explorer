@@ -57,26 +57,28 @@ export function DetailsBanner({ data, ...rest }) {
     useEffect(() => {
         async function fetchIngredients() {
             const response = await api.get(`/dishes/${params.id}`)
-            const ingredientsArray = response.data.ingredients.split(',')
-
-            setIngredients(ingredientsArray)
-
+            const ingredientsArray = response.data[0].ingredients.split(',')
             
-            ingredientsArray.forEach(ingredient => {
+            setIngredients(ingredientsArray)
+            
+            
+            ingredients.forEach(ingredient => {
                 async function fetchIngredientsData() {
-                        const response = await api.get(`/ingredients/${ingredient}`)
-                        
-                        const dataIngredients = {
-                            name: response.data.name,
-                            id: response.data.id,
-                            photo: response.data.photo
-                        }
+                    const response = await api.get(`/ingredients/${ingredient}`)
                     
-                        setIngredientsData(prevState => {
-                            return {...prevState, dataIngredients}
-                        })
+
+                    const dataIngredients = {
+                        name: response.data.name,
+                        id: response.data.id,
+                        photo: response.data.photo
                     }
                     
+                    setIngredientsData(prevState => {
+                        return {...prevState, dataIngredients}
+                    })
+                    console.log(ingredientsData)
+                }
+                
                     fetchIngredientsData()
                 }
 
@@ -98,12 +100,12 @@ export function DetailsBanner({ data, ...rest }) {
 
             <Content>
 
-                <img src={`http://localhost:3333/files/${data.photo}`} alt="" />
+                <img src={`http://localhost:3333/files/${data[0].photo}`} alt="" />
 
                 <div>
-                    <h1>{data.name}</h1>
+                    <h1>{data[0].name}</h1>
 
-                    <h3>{data.description}</h3>
+                    <h3>{data[0].description}</h3>
 
                     <IngredientsWrapper>
 

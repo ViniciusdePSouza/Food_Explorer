@@ -11,10 +11,11 @@ export const Container = styled.div`
     'header'
     'content'
     'footer';
-`
+    `
 
 export const Content = styled.div`
     width: 100%;
+    max-width: 1400px;
     grid-area: content;
 
     padding: 3rem 12.4rem;
@@ -45,6 +46,9 @@ export const Content = styled.div`
 
     > .main-dishes {
         display: flex;
+    }
+
+    > .carrousel-wrapper {
     }
 `
 
