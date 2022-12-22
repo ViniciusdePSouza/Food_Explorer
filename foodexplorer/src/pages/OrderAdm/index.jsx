@@ -56,7 +56,7 @@ export function OrderAdm() {
                         <Input icon={FiSearch} placeholder="Número do ID do cliente" type="number" onChange={e => setClientID(e.target.value)} />
                     </div>
 
-                    <div class='button-wrapper'>
+                    <div className='button-wrapper'>
                         <Button loading={false} title="Ir para pagamento" onClick={handlePayment} />
                     </div>
 
