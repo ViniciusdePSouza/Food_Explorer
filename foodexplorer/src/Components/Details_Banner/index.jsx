@@ -16,6 +16,7 @@ import { useAuth } from '../../hooks/authContext'
 export function DetailsBanner({ data, ...rest }) {
     const navigate = useNavigate()
     const [counter, setCounter] = useState(1)
+    const [controlclick, setControlClick] = useState(0)
     const params = useParams()
     const [ingredients, setIngredients] = useState([])
     const [ingredientsData, setIngredientsData] = useState([])
@@ -54,6 +55,10 @@ export function DetailsBanner({ data, ...rest }) {
         }
 
         alert('Pedido feito com sucesso')
+    }
+
+    function handleClick(){
+        setControlClick(+1)
     }
 
     useEffect(() => {
@@ -120,7 +125,9 @@ export function DetailsBanner({ data, ...rest }) {
                     </IngredientsWrapper>
 
                     <ButtonWrapper>
-                        <h2>{data.price}</h2>
+                        <h2>{data[0].price}</h2>
+
+                        <button className='ingredients-btn' onClick={handleClick}>Ingredientes</button>
 
                         <MinusIcon onClick={handleDecrease}>
                             <FiMinus />
