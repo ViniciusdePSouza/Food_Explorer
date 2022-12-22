@@ -49,15 +49,6 @@ export function Home() {
   }, [])
 
   useEffect(() => {
-    // async function fetchDishesByName() {
-    //   const response = await api.get(`/dishes/${search}`)
-      
-    //   setSearchedDishes(response.data)
-      
-    //   console.log(response.data)
-    // }
-
-    // fetchDishesByName()
     
     let resultsMainDishes = mainDishes.filter(dish => dish.name.toLowerCase().includes(search.toLowerCase()))
     let resultsDrinks = drinks.filter(drink => drink.name.toLowerCase().includes(search.toLowerCase()))
@@ -94,7 +85,7 @@ export function Home() {
 
         <h1>Busca</h1>
 
-        <Carousel cols={3} rows={1} loop={true} gap={0} className="carrousel-wrapper">
+        <Carousel cols={4} rows={1} loop={true} gap={0} className="carrousel-wrapper">
           {
             searchResults.map(dish => (
               <Carousel.Item key={dish.id}>

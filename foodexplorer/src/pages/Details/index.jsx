@@ -11,14 +11,16 @@ import { useState, useEffect } from 'react'
 
 export function Details() {
     const params = useParams()
-    const [data, setData] = useState(null)
+    const [data, setData] = useState([])
     
     useEffect(() => {
+        console.log(data)
         async function fetchDish() {
             const response = await api.get(`/dishes/${params.id}`)
+            console.log(response)
             setData(response.data)
         }
-
+        
         fetchDish()
     }, [])
 
@@ -26,7 +28,7 @@ export function Details() {
         <Container>
             <Header />
 
-            { data &&
+            { data.length > 0 &&
                 <DetailsBanner data={data}/>
             }
 

@@ -19,6 +19,8 @@ export function DetailsBanner({ data, ...rest }) {
     const params = useParams()
     const [ingredients, setIngredients] = useState([])
     const [ingredientsData, setIngredientsData] = useState([])
+    let controlArray = []
+    console.log(data)
 
     const { user } = useAuth()
 
@@ -38,7 +40,7 @@ export function DetailsBanner({ data, ...rest }) {
 
     async function handleOrder() {
 
-        for (let i = 0; i < counter ; i++) {
+        for (let i = 0; i < counter; i++) {
             api.post('orders', { status: 'pending', user_id: user.id, details: data.name })
                 .then(() => console.log(`Pedido ${data.name} adicionado ao carrinho`))
                 .catch(error => {
@@ -58,14 +60,12 @@ export function DetailsBanner({ data, ...rest }) {
         async function fetchIngredients() {
             const response = await api.get(`/dishes/${params.id}`)
             const ingredientsArray = response.data[0].ingredients.split(',')
-            
+
             setIngredients(ingredientsArray)
             
-            
-            ingredients.forEach(ingredient => {
+            ingredientsArray.forEach(ingredient => {
                 async function fetchIngredientsData() {
                     const response = await api.get(`/ingredients/${ingredient}`)
-                    
 
                     const dataIngredients = {
                         name: response.data.name,
@@ -73,21 +73,20 @@ export function DetailsBanner({ data, ...rest }) {
                         photo: response.data.photo
                     }
                     
-                    setIngredientsData(prevState => {
-                        return {...prevState, dataIngredients}
-                    })
-                    console.log(ingredientsData)
-                }
-                
-                    fetchIngredientsData()
+                    controlArray.push(dataIngredients)
                 }
 
-                )
-            }
+                fetchIngredientsData()
+            },
             
+            setIngredientsData(controlArray)
+
+            )
+        }
+
         fetchIngredients()
 
-        }, [])
+    }, [])
 
     return (
         <Container>
@@ -110,10 +109,10 @@ export function DetailsBanner({ data, ...rest }) {
                     <IngredientsWrapper>
 
                         {
-                            ingredients && ingredients.map(ingredient => (
-                                <IngredientCard >
+                            ingredientsData && ingredientsData.map(ingredient => (
+                                <IngredientCard key={ingredient.id}>
                                     <img src={`http://localhost:3333/files/${ingredient.photo}`} alt="" />
-                                    <h5>{ingredient}</h5>
+                                    <h5>{ingredient.name}</h5>
                                 </IngredientCard>
                             ))
                         }
