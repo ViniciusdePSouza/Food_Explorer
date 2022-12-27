@@ -25,6 +25,7 @@
     <li>Logo após isso será possível iniciar o projeto com o comando: npm run dev</li>
   </ul>
   <p>OBS: As orientações são as mesmas para o Front-end quando para o Back-end</p>
+  <p> Link do repositório do Back-end: https://github.com/ViniciusdePSouza/BD_foodexplorer </p>
 </section>
 
 <section>
@@ -79,5 +80,9 @@
       os campos do formulário. Caso algum campo esteja vazio o prato não será criado. Depois de preenchido clique no botão "Adicionar Prato" e pronto, já está adicionado
       o novo prato ao nosso cardápio.</p>
     </section>
+</section>
+<section>
+  <h1>Considerações Finais</h1>
+  <p>Esse é o meu projeto final do curso Explorer. Espero que esteja dentro das expectativas, esse projeto é motivo de muito orgulho para mim pois consegui desenvolve-lo sozinho depois de muitas horas de estudo, pesquisa e trabalho duro! Gostaria de agrade-os também pois graças a esse projeto e a toda a rocketseat conseguimeu primeiro emprego como desenvolvedor, ainda como estagiário e tenho um longo caminho pela frente, porém toda grande caminhada começa com um primeiro passo e esse passo so foi possível com as orientações de vocês. Forte abraço e espero que gostem do projeto ! </p>
 </section>
   
