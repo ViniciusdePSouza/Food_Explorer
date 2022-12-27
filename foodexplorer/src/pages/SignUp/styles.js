@@ -90,7 +90,6 @@ export const Content = styled.div`
         justify-content: center;
     }
 `
-
 export const Form = styled.form`
     width: 50%;
     
