@@ -103,6 +103,8 @@ export const Form = styled.form`
 
     background: ${({ theme }) => theme.COLORS.BACKGROUND_DARKBLUE_700};
 
+    border-radius: 10px;
+
     > h1 {
         font-family: 'Poppins', sans-serif;
         font-weight: 500;

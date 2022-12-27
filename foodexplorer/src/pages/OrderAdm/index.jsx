@@ -39,7 +39,6 @@ export function OrderAdm() {
 
             const response = await api.get(`/orders?user_id=${clientID}`)
             setOrder(response.data)
-            console.log(orders)
         }
 
         fetchOrders()
